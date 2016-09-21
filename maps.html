@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<title>DUBHEMAP</title>
+	<meta name="author" content="Dubhe"/>
+	<meta charset="UTF-8"/>
+	<link href="css/mp.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=573eVrtd87gyP1X2xGLEibX9"></script>
+	<script>
+	
+		  
+		function show()
+		{
+			 
+			document.getElementById("content1").style.opacity="1";
+		}
+
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{x.innerHTML="该浏览器不支持获取地理位置。";}
+  }
+
+function showError(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="用户拒绝对获取地理位置的请求。"
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="位置信息是不可用的。"
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="请求用户地理位置超时。"
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="未知错误。"
+      break;
+    }
+  }
+  
+function showPosition(position)
+  {
+  var map = new BMap.Map("l-map");  // 创建Map实例  
+  var point = new BMap.Point(position.coords.longitude,position.coords.latitude);
+  alert('您的位置：'+position.coords.longitude+','+position.coords.latitude);//提取经纬度值
+	map.addControl(new BMap.MapTypeControl());
+         
+	map.centerAndZoom(point, 18);
+	map.enableScrollWheelZoom(true);
+}
+	function search()
+	{
+		
+	var local = new BMap.LocalSearch(map, {
+		renderOptions: {map: map, panel: "r-result"}
+	});
+	local.search("餐饮");
+}	
+	</script>
+</head>
+
+<body>
+	
+
+	<div id="head">
+		Map of Dubhe
+	</div>
+	<div id="tags">
+		显示小魔仙！
+		<input type="button" onclick="show()" class="tags" />
+	</div>
+	<div id="content1" style="opacity: 0;"> Here is your world.
+		<p id="demo" style="width:100%;background-color:gray;"> 点击按钮获取您当前坐标（可能需要比较长的时间获取)：</p>
+		<button onclick="getLocation()" class="tags"> 点我 </button>
+		<button onclick="search()" class="tags"> 搜索</button>
+	</div>
+
+	<div id="content">
+		<div id="mylocation"></div>
+	</div>
+	<div id="map" >
+			<div id="l-map"></div>
+			<div id="r-result"></div>
+	</div>
+	
+</body>
+</html>

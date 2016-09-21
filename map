@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>DUBHEMAP</title>
+	<meta name="author" content="Dubhe"/>
+	<meta charset="UTF-8"/>
+	<link href="css/mp.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=573eVrtd87gyP1X2xGLEibX9"></script>
+
+</head>
+
+<body>
+	
+
+	<div id="head">
+		Map of Dubhe
+	</div>
+	<div id="tags">
+		显示小魔仙！
+		<input type="button" onclick="show()" class="tags" />
+	</div>
+	<div id="content1" style="opacity: 0;"> Here is your world.
+		<p id="demo" style="width:100%;background-color:gray;"> 点击按钮获取您当前坐标（可能需要比较长的时间获取)：</p>
+		<button onclick="getLocation()" class="tags"> 点我 </button>
+		<button onclick="search()" class="tags"> 搜索</button>
+	</div>
+
+	<div id="content">
+		<div id="mylocation"></div>
+	</div>
+	<div id="map" >
+			<div id="l-map"></div>
+			<div id="r-result"></div>
+	</div>
+	
+</body>
+</html>
