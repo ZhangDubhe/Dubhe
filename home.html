@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh_Ch">
+	<head >
+		<meta charset="utf-8">
+		<meta name="keywords" content="dubhe;zht">
+		<meta name="author" content="Zhang Haotian">
+		<title>Welcome to Dubhe</title>
+		<link href="css/test.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://myserver.fqdn.com/web-optimizer-tutorial/esri/css/esri.css">
+        <script src="https://myserver.fqdn.com/web-optimizer-tutorial/dojo/dojo.js" data-dojo-config="async: true"></script>
+        <script>
+            var map, customModule;
+
+            require([
+                "esri/map", "extraCustomModule/MyCustomModule", "dojo/domReady!"
+            ], function (Map, MyCustomModule) {
+                map = new Map("mapDiv", {
+                    basemap: "streets",
+                    center: [-56.049, 38.485],
+                    zoom: 3
+                });
+
+                customModule = new MyCustomModule();
+            });
+        </script>
+	</head>
+	<body>
+		<div id="home">
+			<div id="title">
+				<h2>DUBHE</h2>		
+				<p>this is a network named Dubhe,like a <span class="star">star</span> in the sky.</p>
+			
+				<nav>
+					<ul>
+						<li><a href="">Article</a></li>
+						<li><a href="">Fotos</a></li>
+						<li><a href="t1.html">Ecnu</a></li>
+						
+					</ul>
+				</nav>
+			</div>
+			<div style="width:100%;height:1em;"></div>
+			<div id="container"  >
+				<div id="cata">
+				<div  class="ta" >
+					<hr/>
+				   <h3><a href="map1.html">Maps</a></h3>		
+				   You can find some maps made by Dubhe.
+				   <hr/>
+				</div>
+				<div class="sp"></div>
+				<div class="ta" >
+					<hr/>
+					<h3><a  href="fotos.html">Fotos</a></h3>
+					There are many photographs taken by Dubhe.
+					<hr/>
+				</div>
+				</div>
+				<div id="ex">
+					<div id="mapDiv" style="width: 100%; height: 100%;"></div>
+				</div>
+				<div id="article">
+					Go to ...
+					<hr/>
+					<h4><a  href="http://mp.weixin.qq.com/s?__biz=MzIzNTA2MTA3OA==&mid=401698423&idx=1&sn=c9476f09888983c3126c268a6898bc27#rd">2015Travel</a></h4>	
+					<br/>
+					<h4><a  href="http://mp.weixin.qq.com/s?__biz=MzIzNTA2MTA3OA==&mid=401898669&idx=1&sn=1ac504ecce5b3759772d4ab5b33b829d#rd">Dubhe Name</a></h4>
+					<br/>
+					<h4><a  href="https://ccgis.cn/appcode/zht/citytour/zht.html">City Tour Pre</a></h4>
+					<hr/>
+				</div>
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

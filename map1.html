@@ -1,0 +1,128 @@
+<!doctype html>
+<html >
+<head>
+	<title>DUBHEMAP</title>
+	<meta name="author" content="Dubhe"/>
+	<!--<meta name="viewport" content="width=1024"/>-->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="css/mp.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tFFWllGDYYaOSEUoZWPdlr47"></script>
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+</head>
+
+<body >
+	
+
+	<div id="head">
+		<div id="head-logo">
+		<img id="head-img" src="imgs/headtitle.gif"  width="400px"/>
+		</div> 
+		<div id="head-tags">	
+			<a href="logreg/loginPage.html" class="sp-tag">登录</a>
+			<a href="home.html" class="sp-tag">返回主页</a>
+			<a href="map.html" class="sp-tag">切换视图</a>
+		</div>
+	</div>
+	
+	<div id="menu" class="normal"> 
+		<div id="menu-wrapper"></div>
+		<div id="menu-tags">
+			<a href="map.html" class="sp-tag">SEARCH</a>
+			<a href="" class="sp-tag">LIBRARY</a>
+			<a href="" class="sp-tag">CLASSROOM</a>
+
+		</div>
+	</div>
+<!--地图文件存放在content里-->
+	<div id="content">
+		<!--百度地图容器-->
+    <div id="map"></div>
+
+	
+		<div id="control">
+			<button type="button" autofocus onclick="getLocation()" style="border:0;" >
+				<img src="imgs/loc.gif" />
+			</button>
+		<div id="para"><p id="demo">点击这里进行定位</p></div>
+<script>
+  			var word=document.getElementById("demo");
+			function getLocation()
+  			{
+  			if (navigator.geolocation)
+    		{
+    		navigator.geolocation.getCurrentPosition(showPosition);
+   			}
+  			else{word.innerHTML="该浏览器不支持获取地理位置。";}
+  			}
+
+function showError(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      word.innerHTML="用户拒绝对获取地理位置的请求。"
+      break;
+    case error.POSITION_UNAVAILABLE:
+      word.innerHTML="位置信息是不可用的。"
+      break;
+    case error.TIMEOUT:
+     word.innerHTML="请求用户地理位置超时。"
+      break;
+    case error.UNKNOWN_ERROR:
+      word.innerHTML="未知错误。"
+      break;
+    }
+  }
+
+ 	
+function showPosition(position) {
+
+    var x = position.coords.longitude-0.0065;
+    var y = position.coords.latitude-0.00635;
+  //alert('您的位置：'+position.coords.longitude+','+position.coords.latitude);提取经纬度值
+  word.innerHTML='您的位置'+position.coords.longitude.toFixed( 2 )+','+position.coords.latitude.toFixed( 2 );	
+    var url="http://api.zdoz.net/transgpsbd.aspx?lat="+y+"&lng="+x;
+    $.ajax({                  
+        url:url,
+        type: 'GET',
+        success:function(tmpmsg){
+              var latlng=tmpmsg;//JSON.parse(tmpmsg);
+              var ggPoint = new BMap.Point(latlng.Lng,latlng.Lat);
+
+              var translateCallback = function (data){
+                  if(data.status === 0) {
+                      var marker = new BMap.Marker(data.points[0]);
+                      map.addOverlay(marker);
+                      var label = new BMap.Label("You are here!",{offset:new BMap.Size(20,-10)});
+                      marker.setLabel(label); //添加location label
+                      
+                      map.centerAndZoom(data.points[0],19);
+                  }
+              }
+        
+            setTimeout(function(){
+                var convertor = new BMap.Convertor();
+                var pointArr = [];
+                pointArr.push(ggPoint);
+                convertor.translate(pointArr, 3, 5, translateCallback)
+            }, 1000);
+
+        },
+        dataType: 'jsonp',
+        async:false
+    }); 
+
+}
+  
+
+</script>
+		</div>
+	</div>
+	<div id="cr" >
+    Copyright&copy;ZhangHt,ZhuM,RenZh
+	</div>
+	
+</body>
+	<script type="text/javascript" src="js/test.js"></script>
+</html>
