@@ -1,9 +1,9 @@
-     //´´½¨ºÍ³õÊ¼»¯µØÍ¼º¯Êı£º
+     //åˆ›å»ºå’Œåˆå§‹åŒ–åœ°å›¾å‡½æ•°ï¼š
     function initMap(){
-      createMap();//´´½¨µØÍ¼
-      setMapEvent();//ÉèÖÃµØÍ¼ÊÂ¼ş
-      addMapControl();//ÏòµØÍ¼Ìí¼Ó¿Ø¼ş
-      addMapOverlay();//ÏòµØÍ¼Ìí¼Ó¸²¸ÇÎï
+      createMap();//åˆ›å»ºåœ°å›¾
+      setMapEvent();//è®¾ç½®åœ°å›¾äº‹ä»¶
+      addMapControl();//å‘åœ°å›¾æ·»åŠ æ§ä»¶
+      addMapOverlay();//å‘åœ°å›¾æ·»åŠ è¦†ç›–ç‰©
     }
     function createMap(){ 
       map = new BMap.Map("map"); 
@@ -40,7 +40,7 @@
         map.addOverlay(polyline);
       }
     }
-    //ÏòµØÍ¼Ìí¼Ó¿Ø¼ş
+    //å‘åœ°å›¾æ·»åŠ æ§ä»¶
     function addMapControl(){
       var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT});
       scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
