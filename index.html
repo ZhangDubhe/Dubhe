@@ -1,63 +1,45 @@
-<html>
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="keywords" content="dubhe;zht">
-		<meta name="author" content="Zhang Haotian">
-		<title>Welcome to Dubhe</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewpoint" content="initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:0px;padding:0px}
+        #b{height:100%}
+    </style>
+    <link rel="stylesheet" href="normalise.css">
+    <title>Title</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=jfRANx4X3hBBGNQxUGHiKf5ogaHnazGb">
+    </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+    </script>
+</head>
+<body>
+<nav class="nav_mg_01"></nav>
+<div class="header">
 
-		<style>
-body {
-    font-family: 'PT Sans', sans-serif;
-    font-size:100%;
-		background-image:url("./imgs/bg1.jpg");}
-#ti h1 {
-	  font-size:1000%;color:white;
-    -webkit-transform: translateZ(100px);
-    -moz-transform:    translateZ(100px);
-    -ms-transform:     translateZ(100px);
-    -o-transform:      translateZ(100px);
-    transform:         translateZ(100px);
-}
-a {
-    color: inherit;
-    
-    text-decoration: none;
-    padding: 0 0.1em;
-    background: rgba(255,255,255,0.5);
-    text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
-    border-radius: 0.2em;
+</div>
 
-    -webkit-transition: 0.5s;
-    -moz-transition:    0.5s;
-    -ms-transition:     0.5s;
-    -o-transition:      0.5s;
-    transition:         0.5s;
-}
+<div id="b"></div>
+    <script type="text/javascript">
+        var map = new BMap.Map("b");          // 创建地图实例
+        var point = new BMap.Point(121.480237,31.236305);  // 创建点坐标
+        map.centerAndZoom(point,11);                 // 初始化地图，设置中心点坐标和地图级别
+        var b = new BMap.Bounds(new BMap.Point(120.480237,30.736305),new BMap.Point(122.180237,33.236305));
+        try {
+            BMapLib.AreaRestriction.setBounds(map, b);
+        } catch (e) {
+            alert(e);
+        }
+    </script>
 
-a:hover,
-a:focus {
-    background: rgba(255,255,255,1);
-    text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
-}
-#headpic p{
-	font-size:2.2em;
-	color:#4f5276;
-}
-		</style>
-	</head>
-	<body>
-		<div style="width:100%">
-			<div id="ti"  align="center">
-				<h1>DUBHE</h1>
-				<span class="try">Welcome to my homepage.</span>
-			</div>
-			
-			<div id="headpic"  align="center">
-				<img src="./imgs/head.gif"style="width:200px;"/>
-				<p><a href="home.html">ENTER</a></p>
-			</div>
-			
-			
-		</div>
-	</body>
+
+<div class="footer">
+
+</div>
+</body>
 </html>
+
+			
+		
